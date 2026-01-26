@@ -8,8 +8,8 @@ class TelegramService
 {
     public function send(string $text): void
     {
-        $token = (string) env('TELEGRAM_BOT_TOKEN', '');
-        $chatId = (string) env('TELEGRAM_CHAT_ID', '');
+        $token = (string) config('services.telegram.bot_token', '');
+        $chatId = (string) config('services.telegram.chat_id', '');
 
         if ($token === '' || $chatId === '') {
             return;
