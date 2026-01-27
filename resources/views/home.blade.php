@@ -4,6 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Электроэпиляция в Пятигорске — Бачурина Елена</title>
+    <meta name="description" content="Электроэпиляция в Пятигорске. Онлайн‑запись, стоимость, контакты. Бачурина Елена.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Электроэпиляция в Пятигорске — Бачурина Елена">
+    <meta property="og:description" content="Онлайн‑запись, стоимость и свободные окна. Напишите в удобный мессенджер — отвечу и подберу время.">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ url('/og.svg') }}">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="{{ url()->current() }}">
+    <script type="application/ld+json">{!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'LocalBusiness',
+        'name' => 'Электроэпиляция — Бачурина Елена',
+        'url' => url('/'),
+        'telephone' => '+79604949073',
+        'address' => [
+            '@type' => 'PostalAddress',
+            'addressLocality' => 'Пятигорск',
+            'addressCountry' => 'RU',
+        ],
+        'areaServed' => 'Пятигорск',
+        'sameAs' => [
+            'https://www.instagram.com/elektrolog_kmv/',
+            'https://t.me/elektrolog_kmv1',
+        ],
+        'serviceType' => 'Электроэпиляция',
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
@@ -19,6 +49,7 @@
         @keyframes glow { 0%,100% { opacity:.55; filter: blur(50px);} 50% { opacity:.85; filter: blur(60px);} }
         @keyframes shimmer { 0% { transform: translateX(-120%);} 100% { transform: translateX(220%);} }
         @keyframes bob { 0%,100% { transform: translate3d(0,0,0);} 50% { transform: translate3d(0,10px,0);} }
+        @keyframes dnaFloat { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(0,-18px,0) rotate(1.2deg); } }
         .floaty { animation: floaty 7.5s var(--ease) infinite; }
         .glow { animation: glow 7s var(--ease) infinite; }
         .reveal { opacity: 0; transform: translate3d(0,18px,0); }
@@ -63,6 +94,31 @@
             transform: translate3d(0, calc(var(--intro-p) * -26px), 0) scale(calc(1 - (var(--intro-p) * .04)));
             filter: blur(calc(var(--intro-p) * 6px));
             will-change: opacity, transform, filter;
+        }
+
+        .master-card {
+            transform: translate3d(0,0,0);
+            will-change: transform;
+            transition: transform .35s var(--ease);
+        }
+
+        .dna {
+            position: absolute;
+            pointer-events: none;
+            opacity: .68;
+            filter: blur(.2px);
+            transform: translate3d(0,0,0);
+            animation: dnaFloat 9s var(--ease) infinite;
+        }
+        .dna svg { display: block; }
+        .dna .stroke { stroke: rgba(15,23,42,.28); }
+        .dna .dot { fill: rgba(15,23,42,.34); }
+        .dna .accent { stroke: rgba(15,23,42,.20); }
+        @media (max-width: 768px) {
+            .dna { opacity: .28; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .dna { animation: none; }
         }
 
         details.faq > summary { list-style: none; }
@@ -168,40 +224,131 @@
             <div class="absolute -top-28 -left-28 h-[34rem] w-[34rem] rounded-full bg-slate-200 opacity-70 glow"></div>
             <div class="absolute -bottom-32 -right-32 h-[38rem] w-[38rem] rounded-full bg-slate-100 opacity-90 glow" style="animation-delay: 1.6s"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-slate-50/70"></div>
+
+            <div class="dna left-[-80px] top-[120px] hidden md:block" style="animation-duration: 10.5s; animation-delay: .2s;">
+                <svg width="260" height="520" viewBox="0 0 260 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path class="accent" d="M70 30 C140 90 120 150 190 210 C120 270 140 330 70 390 C140 450 120 490 190 510" stroke-width="2" stroke-linecap="round"/>
+                    <path class="stroke" d="M190 30 C120 90 140 150 70 210 C140 270 120 330 190 390 C120 450 140 490 70 510" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M92 80 L168 80" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M86 140 L174 140" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M94 200 L166 200" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M86 260 L174 260" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M94 320 L166 320" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M86 380 L174 380" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M94 440 L166 440" stroke-width="2" stroke-linecap="round"/>
+                    <circle class="dot" cx="70" cy="30" r="4"/>
+                    <circle class="dot" cx="190" cy="30" r="4"/>
+                    <circle class="dot" cx="130" cy="120" r="3" opacity=".65"/>
+                    <circle class="dot" cx="70" cy="210" r="4"/>
+                    <circle class="dot" cx="190" cy="210" r="4"/>
+                    <circle class="dot" cx="70" cy="390" r="4"/>
+                    <circle class="dot" cx="190" cy="390" r="4"/>
+                </svg>
+            </div>
+
+            <div class="dna right-[-90px] top-[90px]" style="animation-duration: 12.5s; animation-delay: 1.1s; opacity: .42;">
+                <svg width="240" height="480" viewBox="0 0 240 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path class="accent" d="M62 20 C126 78 110 140 172 198 C110 256 126 318 62 376 C126 434 110 456 172 470" stroke-width="2" stroke-linecap="round"/>
+                    <path class="stroke" d="M172 20 C110 78 126 140 62 198 C126 256 110 318 172 376 C110 434 126 456 62 470" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M84 66 L150 66" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M80 122 L154 122" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M86 178 L148 178" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M80 234 L154 234" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M86 290 L148 290" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M80 346 L154 346" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M86 402 L148 402" stroke-width="2" stroke-linecap="round"/>
+                    <circle class="dot" cx="62" cy="20" r="4"/>
+                    <circle class="dot" cx="172" cy="20" r="4"/>
+                    <circle class="dot" cx="62" cy="198" r="4"/>
+                    <circle class="dot" cx="172" cy="198" r="4"/>
+                    <circle class="dot" cx="62" cy="376" r="4"/>
+                    <circle class="dot" cx="172" cy="376" r="4"/>
+                </svg>
+            </div>
+
+            <div class="dna left-[22%] bottom-[-140px] hidden md:block" style="animation-duration: 14.5s; animation-delay: .6s; opacity: .30; transform: rotate(-8deg);">
+                <svg width="220" height="440" viewBox="0 0 220 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path class="accent" d="M58 18 C120 72 108 130 162 184 C108 238 120 296 58 350 C120 404 108 424 162 434" stroke-width="2" stroke-linecap="round"/>
+                    <path class="stroke" d="M162 18 C108 72 120 130 58 184 C120 238 108 296 162 350 C108 404 120 424 58 434" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M78 60 L142 60" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M74 112 L146 112" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M80 164 L140 164" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M74 216 L146 216" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M80 268 L140 268" stroke-width="2" stroke-linecap="round"/>
+                    <path class="accent" d="M74 320 L146 320" stroke-width="2" stroke-linecap="round"/>
+                    <circle class="dot" cx="58" cy="18" r="4"/>
+                    <circle class="dot" cx="162" cy="18" r="4"/>
+                    <circle class="dot" cx="58" cy="184" r="4"/>
+                    <circle class="dot" cx="162" cy="184" r="4"/>
+                    <circle class="dot" cx="58" cy="350" r="4"/>
+                    <circle class="dot" cx="162" cy="350" r="4"/>
+                </svg>
+            </div>
         </div>
 
         <div class="intro-content mx-auto max-w-6xl px-4 pt-24 pb-16 min-h-screen flex items-center">
-            <div class="w-full">
-                <div class="reveal">
-                    <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs text-slate-700">
-                        <span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>
-                        Приём по записи
+            <div class="w-full grid gap-10 md:grid-cols-2 md:gap-12 items-center">
+                <div>
+                    <div class="reveal">
+                        <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs text-slate-700">
+                            <span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>
+                            Приём по записи
+                        </div>
+                        <h1 class="mt-6 text-4xl md:text-7xl font-semibold tracking-tight leading-[1.02]">
+                            Электроэпиляция
+                            <span class="block text-slate-700">г. Пятигорск</span>
+                        </h1>
+                        <div class="mt-6 text-lg md:text-xl text-slate-700">
+                            Бачурина Елена
+                        </div>
+                        <div class="mt-10 flex flex-col sm:flex-row gap-3">
+                            <a href="https://www.instagram.com/elektrolog_kmv/?utm_source=site&utm_medium=intro_button&utm_campaign=ig_follow" target="_blank" rel="noopener noreferrer" class="btn w-full sm:w-auto inline-flex justify-center rounded-full px-6 py-3 text-sm font-medium text-white" style="background: linear-gradient(90deg, #F58529, #DD2A7B, #8134AF, #515BD4);">
+                                Instagram • подписаться
+                            </a>
+                            <a href="#book" class="btn w-full sm:w-auto inline-flex justify-center rounded-full border border-slate-300 bg-white/70 px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-50">
+                                Записаться
+                            </a>
+                        </div>
                     </div>
-                    <h1 class="mt-6 text-4xl md:text-7xl font-semibold tracking-tight leading-[1.02]">
-                        Электроэпиляция
-                        <span class="block text-slate-700">г. Пятигорск</span>
-                    </h1>
-                    <div class="mt-6 text-lg md:text-xl text-slate-700">
-                        Бачурина Елена
-                    </div>
-                    <div class="mt-10 flex flex-col sm:flex-row gap-3">
-                        <a href="https://www.instagram.com/elektrolog_kmv/?utm_source=site&utm_medium=intro_button&utm_campaign=ig_follow" target="_blank" rel="noopener noreferrer" class="btn w-full sm:w-auto inline-flex justify-center rounded-full px-6 py-3 text-sm font-medium text-white" style="background: linear-gradient(90deg, #F58529, #DD2A7B, #8134AF, #515BD4);">
-                            Instagram • подписаться
-                        </a>
-                        <a href="#book" class="btn w-full sm:w-auto inline-flex justify-center rounded-full border border-slate-300 bg-white/70 px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-50">
-                            Записаться
-                        </a>
-                        <a href="#content" class="btn w-full sm:w-auto inline-flex justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">
-                            Открыть сайт
+
+                    <div class="mt-14 flex justify-center md:justify-start">
+                        <a href="#content" class="intro-scroll inline-flex items-center gap-2 rounded-full glass px-4 py-3 text-xs text-slate-700">
+                            <span>Листай вниз</span>
+                            <span aria-hidden="true">↓</span>
                         </a>
                     </div>
                 </div>
 
-                <div class="mt-14 flex justify-center">
-                    <a href="#content" class="intro-scroll inline-flex items-center gap-2 rounded-full glass px-4 py-3 text-xs text-slate-700">
-                        <span>Листай вниз</span>
-                        <span aria-hidden="true">↓</span>
-                    </a>
+                <div class="reveal md:justify-self-end">
+                    <div class="relative">
+                        <div class="pointer-events-none absolute -inset-10 -z-10 rounded-[2.5rem] bg-gradient-to-tr from-rose-200/70 via-white/60 to-slate-200/70 blur-3xl opacity-80"></div>
+                        <div id="masterCard" class="master-card glass glass-strong rounded-[2.25rem] p-4 md:p-5">
+                            <div class="relative overflow-hidden rounded-[1.9rem] bg-white/50">
+                                <img
+                                    id="masterPhoto"
+                                    src="{{ url('/master.png') }}"
+                                    data-webp="{{ url('/master.webp') }}"
+                                    data-webp2x="{{ url('/master@2x.webp') }}"
+                                    alt="Мастер электроэпиляции"
+                                    class="block w-full max-w-[360px] md:max-w-[420px] h-auto object-cover"
+                                    width="420"
+                                    height="520"
+                                    decoding="async"
+                                    fetchpriority="high"
+                                >
+                                <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/75 via-white/20 to-transparent"></div>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between gap-3">
+                                <div>
+                                    <div class="text-sm font-semibold tracking-tight">Елена Бачурина</div>
+                                    <div class="mt-1 text-xs text-slate-600">Мастер электроэпиляции</div>
+                                </div>
+                                <div class="inline-flex items-center rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs text-slate-700">
+                                    Стаж 7 лет • по записи
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -625,6 +772,15 @@
     </span>
 </a>
 
+<div id="stickyCta" class="fixed bottom-4 left-4 z-50 sm:hidden flex items-center gap-2">
+    <a href="#book" class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-medium text-white shadow-lg hover:bg-slate-800" aria-label="Записаться">
+        Записаться
+    </a>
+    <a href="tel:+79604949073" class="btn inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/80 px-4 py-3 text-sm font-medium text-slate-900 shadow-lg hover:bg-slate-50" aria-label="Позвонить">
+        Позвонить
+    </a>
+</div>
+
 <div id="igPopup" class="fixed inset-0 z-[60] hidden">
     <div id="igPopupBackdrop" class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
     <div class="relative mx-auto max-w-lg px-4 py-10">
@@ -674,6 +830,7 @@
     const $ = (id) => document.getElementById(id);
 
     let preferredDateChosen = false;
+    let lastBookingPayload = null;
 
     const io = new IntersectionObserver((entries) => {
         for (const e of entries) {
@@ -686,9 +843,31 @@
 
     document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-    function setMsg(text) {
+    function escapeHtml(s) {
+        return String(s ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function setMsg(text, type = 'info', opts = {}) {
         const el = $('formMsg');
         el.classList.remove('hidden');
+        el.classList.remove('border-emerald-200', 'bg-emerald-50', 'text-emerald-900', 'border-rose-200', 'bg-rose-50', 'text-rose-900');
+        if (type === 'success') {
+            el.classList.add('border-emerald-200', 'bg-emerald-50', 'text-emerald-900');
+        }
+        if (type === 'error') {
+            el.classList.add('border-rose-200', 'bg-rose-50', 'text-rose-900');
+        }
+
+        if (opts.html) {
+            el.innerHTML = opts.html;
+            return;
+        }
+
         el.textContent = text;
     }
 
@@ -696,6 +875,44 @@
         const el = $('formMsg');
         el.classList.add('hidden');
         el.textContent = '';
+    }
+
+    async function tryRetryBooking(form) {
+        if (!lastBookingPayload) return;
+        const retryBtn = $('retryBooking');
+        if (retryBtn) retryBtn.disabled = true;
+
+        try {
+            const data = await submitBooking(lastBookingPayload);
+            const id = data?.id ? String(data.id) : '';
+            const safeId = id ? escapeHtml(id) : '—';
+            const okHtml = `
+                <div class="font-medium">Заявка отправлена.</div>
+                <div class="mt-1 text-sm">Номер заявки: <span class="font-semibold">#${safeId}</span></div>
+                <div class="mt-3 flex flex-col sm:flex-row gap-2">
+                    <a class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800" href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
+                    <a class="btn inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+                </div>
+            `;
+            setMsg('', 'success', { html: okHtml });
+            form.reset();
+            preferredDateChosen = false;
+            $('slots').innerHTML = '';
+            $('slotsEmpty').classList.add('hidden');
+            $('starts_at').value = '';
+            lastBookingPayload = null;
+        } catch (e2) {
+            if (retryBtn) retryBtn.disabled = false;
+            const msg2 = e2 && e2.message ? e2.message : 'Не удалось отправить заявку.';
+            const errHtml = `
+                <div class="font-medium">Ошибка отправки</div>
+                <div class="mt-1 text-sm">${escapeHtml(msg2)}</div>
+                <div class="mt-3 flex flex-col sm:flex-row gap-2">
+                    <button id="retryBooking" type="button" class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800">Отправить ещё раз</button>
+                </div>
+            `;
+            setMsg('', 'error', { html: errHtml });
+        }
     }
 
     function formatTime(iso) {
@@ -779,6 +996,22 @@
         if ($('date').value) loadSlots();
     });
 
+    async function submitBooking(payload) {
+        const res = await fetch('/api/public/appointments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            const msg = err.message || 'Не удалось отправить заявку. Проверьте данные.';
+            throw new Error(msg);
+        }
+
+        return await res.json().catch(() => ({}));
+    }
+
     $('bookingForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         clearMsg();
@@ -792,23 +1025,65 @@
 
         const payload = Object.fromEntries(fd.entries());
 
-        const res = await fetch('/api/public/appointments', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-        });
-
-        if (!res.ok) {
-            const err = await res.json().catch(() => ({}));
-            setMsg(err.message || 'Не удалось отправить заявку. Проверьте данные.');
-            return;
+        try {
+            const params = new URLSearchParams(window.location.search || '');
+            payload.utm_source = params.get('utm_source') || '';
+            payload.utm_medium = params.get('utm_medium') || '';
+            payload.utm_campaign = params.get('utm_campaign') || '';
+            payload.utm_content = params.get('utm_content') || '';
+            payload.utm_term = params.get('utm_term') || '';
+            payload.landing_url = window.location.href;
+            payload.referrer = document.referrer || '';
+        } catch (e2) {
+            // ignore
         }
 
-        setMsg('Заявка отправлена. Я свяжусь с вами для подтверждения.');
-        form.reset();
-        preferredDateChosen = false;
-        $('slots').innerHTML = '';
-        $('slotsEmpty').classList.add('hidden');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) submitBtn.disabled = true;
+        lastBookingPayload = payload;
+
+        try {
+            const data = await submitBooking(payload);
+            const id = data?.id ? String(data.id) : '';
+            const safeId = id ? escapeHtml(id) : '—';
+            const html = `
+                <div class="font-medium">Заявка отправлена.</div>
+                <div class="mt-1 text-sm">Номер заявки: <span class="font-semibold">#${safeId}</span></div>
+                <div class="mt-2 text-sm">Я подтвержу запись и напишу в ближайшее время.</div>
+                <div class="mt-3 flex flex-col sm:flex-row gap-2">
+                    <a class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800" href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
+                    <a class="btn inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+                    <a class="btn inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" href="tel:+79604949073">Позвонить</a>
+                </div>
+            `;
+            setMsg('', 'success', { html });
+
+            form.reset();
+            preferredDateChosen = false;
+            $('slots').innerHTML = '';
+            $('slotsEmpty').classList.add('hidden');
+            $('starts_at').value = '';
+            lastBookingPayload = null;
+        } catch (err) {
+            const msg = err && err.message ? err.message : 'Не удалось отправить заявку. Проверьте данные.';
+            const html = `
+                <div class="font-medium">Ошибка отправки</div>
+                <div class="mt-1 text-sm">${escapeHtml(msg)}</div>
+                <div class="mt-3 flex flex-col sm:flex-row gap-2">
+                    <button id="retryBooking" type="button" class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800">Отправить ещё раз</button>
+                </div>
+            `;
+            setMsg('', 'error', { html });
+        } finally {
+            if (submitBtn) submitBtn.disabled = false;
+        }
+    });
+
+    $('formMsg').addEventListener('click', (e) => {
+        const btn = e.target instanceof Element ? e.target.closest('#retryBooking') : null;
+        if (!btn) return;
+        const form = $('bookingForm');
+        if (form) tryRetryBooking(form);
     });
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -875,6 +1150,7 @@
             bookingModal.classList.add('hidden');
             document.documentElement.classList.remove('overflow-hidden');
             document.body.classList.remove('overflow-hidden');
+            syncStickyCta();
         };
 
         const openModal = () => {
@@ -882,6 +1158,7 @@
             bookingModal.classList.remove('hidden');
             document.documentElement.classList.add('overflow-hidden');
             document.body.classList.add('overflow-hidden');
+            syncStickyCta();
         };
 
         const togglePrice = (forceOpen = null) => {
@@ -892,8 +1169,16 @@
             if (willOpen) {
                 closeModal();
                 heroPriceHost.classList.remove('hidden');
+                if (heroPriceBtn) {
+                    heroPriceBtn.classList.remove('border-slate-300', 'bg-white/70', 'text-slate-900', 'hover:bg-slate-50');
+                    heroPriceBtn.classList.add('bg-slate-900', 'text-white', 'border-slate-900', 'hover:bg-slate-800');
+                }
             } else {
                 heroPriceHost.classList.add('hidden');
+                if (heroPriceBtn) {
+                    heroPriceBtn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900', 'hover:bg-slate-800');
+                    heroPriceBtn.classList.add('border-slate-300', 'bg-white/70', 'text-slate-900', 'hover:bg-slate-50');
+                }
                 heroPriceBtn?.focus?.();
             }
         };
@@ -907,6 +1192,10 @@
         if (heroBookBtn) {
             heroBookBtn.addEventListener('click', () => {
                 if (heroPriceHost) heroPriceHost.classList.add('hidden');
+                if (heroPriceBtn) {
+                    heroPriceBtn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900', 'hover:bg-slate-800');
+                    heroPriceBtn.classList.add('border-slate-300', 'bg-white/70', 'text-slate-900', 'hover:bg-slate-50');
+                }
                 openModal();
             });
         }
@@ -936,6 +1225,10 @@
             if (href === '#book') {
                 e.preventDefault();
                 if (heroPriceHost) heroPriceHost.classList.add('hidden');
+                if (heroPriceBtn) {
+                    heroPriceBtn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900', 'hover:bg-slate-800');
+                    heroPriceBtn.classList.add('border-slate-300', 'bg-white/70', 'text-slate-900', 'hover:bg-slate-50');
+                }
                 openModal();
             }
         });
@@ -943,19 +1236,64 @@
         $('year').textContent = new Date().getFullYear();
         loadPrice();
 
-        const header = $('siteHeader');
-        header.classList.add('glass');
-        const onScroll = () => {
-            if (window.scrollY > 40) {
-                header.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
-                header.classList.add('opacity-100', 'translate-y-0');
-            } else {
-                header.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
-                header.classList.remove('opacity-100', 'translate-y-0');
+        const stickyCta = $('stickyCta');
+        const isMobile = window.matchMedia && window.matchMedia('(max-width: 639px)').matches;
+        const syncStickyCta = () => {
+            if (!stickyCta || !isMobile) return;
+            const modalOpen = bookingModal && !bookingModal.classList.contains('hidden');
+            const bookSection = $('book');
+            let nearBook = false;
+            if (bookSection) {
+                const r = bookSection.getBoundingClientRect();
+                nearBook = r.top < window.innerHeight * 0.65 && r.bottom > 0;
             }
+            stickyCta.style.display = (modalOpen || nearBook) ? 'none' : 'flex';
         };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
+
+        window.addEventListener('scroll', syncStickyCta, { passive: true });
+        window.addEventListener('resize', syncStickyCta);
+        syncStickyCta();
+
+        const masterPhoto = $('masterPhoto');
+        if (masterPhoto) {
+            const webp = masterPhoto.dataset.webp;
+            const webp2x = masterPhoto.dataset.webp2x;
+            const preferred = (window.devicePixelRatio || 1) > 1.2 ? (webp2x || webp) : webp;
+
+            if (preferred) {
+                fetch(preferred, { method: 'HEAD', cache: 'no-store' })
+                    .then((r) => {
+                        if (!r.ok) return;
+                        const ct = (r.headers.get('content-type') || '').toLowerCase();
+                        if (ct && !ct.includes('image/webp')) return;
+                        masterPhoto.src = preferred;
+                    })
+                    .catch(() => {});
+            }
+        }
+
+        const masterCard = $('masterCard');
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (masterCard && !reduceMotion) {
+            let rafCard = 0;
+            const updateCard = () => {
+                rafCard = 0;
+                const intro = $('intro');
+                if (!intro) return;
+                const rect = intro.getBoundingClientRect();
+                const progress = Math.min(1, Math.max(0, (0 - rect.top) / Math.max(1, rect.height)));
+                const translate = (1 - progress) * 8;
+                const rotate = (1 - progress) * -0.6;
+                masterCard.style.transform = `translate3d(0, ${translate}px, 0) rotate(${rotate}deg)`;
+            };
+            const onScrollCard = () => {
+                if (rafCard) return;
+                rafCard = window.requestAnimationFrame(updateCard);
+            };
+            window.addEventListener('scroll', onScrollCard, { passive: true });
+            window.addEventListener('resize', onScrollCard);
+            updateCard();
+        }
 
         const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const intro = $('intro');
