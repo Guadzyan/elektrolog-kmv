@@ -19,6 +19,13 @@ class Appointment extends Model
         'duration_minutes',
         'status',
         'source',
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_content',
+        'utm_term',
+        'landing_url',
+        'referrer',
         'needle_type',
         'note',
     ];

@@ -23,6 +23,13 @@ class AppointmentsController extends Controller
             'duration_minutes' => ['nullable', 'integer', 'min:15', 'max:600'],
             'needle_type' => ['nullable', 'in:body,face'],
             'note' => ['nullable', 'string'],
+            'utm_source' => ['nullable', 'string', 'max:128'],
+            'utm_medium' => ['nullable', 'string', 'max:128'],
+            'utm_campaign' => ['nullable', 'string', 'max:128'],
+            'utm_content' => ['nullable', 'string', 'max:128'],
+            'utm_term' => ['nullable', 'string', 'max:128'],
+            'landing_url' => ['nullable', 'string', 'max:512'],
+            'referrer' => ['nullable', 'string', 'max:512'],
         ]);
 
         $client = Client::query()->firstOrCreate(
@@ -56,6 +63,13 @@ class AppointmentsController extends Controller
             'duration_minutes' => (int) ($validated['duration_minutes'] ?? 60),
             'status' => Appointment::STATUS_PENDING,
             'source' => 'web',
+            'utm_source' => $validated['utm_source'] ?? null,
+            'utm_medium' => $validated['utm_medium'] ?? null,
+            'utm_campaign' => $validated['utm_campaign'] ?? null,
+            'utm_content' => $validated['utm_content'] ?? null,
+            'utm_term' => $validated['utm_term'] ?? null,
+            'landing_url' => $validated['landing_url'] ?? $request->fullUrl(),
+            'referrer' => $validated['referrer'] ?? $request->headers->get('referer'),
             'needle_type' => $validated['needle_type'] ?? null,
             'note' => $note,
         ]);
@@ -106,13 +120,34 @@ class AppointmentsController extends Controller
             ? ('Дата и время: ' . e($startsAt))
             : ('Дата/время: ' . e($startsAt));
 
+        $utmParts = array_values(array_filter([
+            $appointment->utm_source ?? null,
+            $appointment->utm_medium ?? null,
+            $appointment->utm_campaign ?? null,
+        ], fn ($v) => $v !== null && trim((string) $v) !== ''));
+
+        $attributionLines = [];
+        if (! empty($utmParts)) {
+            $attributionLines[] = '<b>UTM</b>: ' . e(implode(' / ', $utmParts));
+        }
+        if (! empty(trim((string) ($appointment->landing_url ?? '')))) {
+            $attributionLines[] = '<b>Landing</b>: ' . e((string) $appointment->landing_url);
+        }
+        if (! empty(trim((string) ($appointment->referrer ?? '')))) {
+            $attributionLines[] = '<b>Referrer</b>: ' . e((string) $appointment->referrer);
+        }
+        $attributionBlock = ! empty($attributionLines)
+            ? ("\n\n" . '<b>Источник/UTM</b>' . "\n" . implode("\n", $attributionLines))
+            : '';
+
         $msg = '<b>Новая заявка на электроэпиляцию</b>' . "\n\n".
             '<b>Клиент</b>: ' . e($client->name) . "\n".
             '<b>Телефон</b>: <a href="tel:' . e($telPhone) . '">' . e($displayPhone) . '</a>' . "\n".
             $tgLine.
             $timeLine . "\n".
             'Длительность: ' . e((string) $appointment->duration_minutes) . ' мин' . "\n".
-            'Зона: ' . e($needleLabel) . "\n\n".
+            'Зона: ' . e($needleLabel).
+            $attributionBlock . "\n\n".
             '<b>Комментарий</b>: ' . e(Str::limit((string) ($appointment->note ?? '—'), 700));
 
         $telegram->send($msg);

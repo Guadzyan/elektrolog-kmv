@@ -22,7 +22,7 @@ Route::prefix('public')->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:10,1');
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('/me', [AuthController::class, 'me']);

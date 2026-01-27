@@ -11,11 +11,21 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
+        if ((bool) config('admin.disabled', false)) {
+            return response()->json(['message' => 'Admin is disabled'], 403);
+        }
+
+        $allowedEmails = (array) config('admin.allowed_emails', []);
+
         $validated = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required', 'string'],
             'device_name' => ['nullable', 'string', 'max:255'],
         ]);
+
+        if (empty($allowedEmails) || ! in_array(strtolower($validated['email']), array_map('strtolower', $allowedEmails), true)) {
+            return response()->json(['message' => 'Forbidden'], 403);
+        }
 
         /** @var User|null $user */
         $user = User::query()->where('email', $validated['email'])->first();

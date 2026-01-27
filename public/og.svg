@@ -1,0 +1,44 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F1F5F9"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(230 140) rotate(35) scale(520 420)">
+      <stop stop-color="#E2E8F0" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#E2E8F0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(980 520) rotate(-25) scale(560 460)">
+      <stop stop-color="#CBD5E1" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#CBD5E1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pill" x1="120" y1="120" x2="420" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" rx="52" fill="url(#bg)"/>
+  <rect width="1200" height="630" rx="52" fill="url(#glow1)"/>
+  <rect width="1200" height="630" rx="52" fill="url(#glow2)"/>
+
+  <g opacity="0.95">
+    <rect x="96" y="92" width="340" height="56" rx="28" fill="url(#pill)" stroke="#0F172A" stroke-opacity="0.10"/>
+    <circle cx="130" cy="120" r="6" fill="#0F172A"/>
+    <text x="148" y="127" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="20" fill="#334155">Электроэпиляция • по записи</text>
+  </g>
+
+  <text x="96" y="250" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="72" font-weight="700" fill="#0F172A">Электроэпиляция</text>
+  <text x="96" y="330" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="56" font-weight="600" fill="#334155">г. Пятигорск</text>
+  <text x="96" y="392" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="32" font-weight="500" fill="#475569">Бачурина Елена</text>
+
+  <g>
+    <rect x="96" y="458" width="520" height="76" rx="28" fill="#0F172A"/>
+    <text x="132" y="507" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="26" font-weight="600" fill="#FFFFFF">Онлайн‑запись • Стоимость • Контакты</text>
+  </g>
+
+  <g opacity="0.8">
+    <path d="M990 168c0-44 36-80 80-80s80 36 80 80-36 80-80 80-80-36-80-80Z" fill="#E2E8F0"/>
+    <path d="M880 420c0-54 44-98 98-98s98 44 98 98-44 98-98 98-98-44-98-98Z" fill="#CBD5E1"/>
+  </g>
+</svg>
