@@ -326,16 +326,14 @@
                             <div class="relative overflow-hidden rounded-[1.9rem] bg-white/50">
                                 <img
                                     id="masterPhoto"
-                                    src="{{ url('/master.png') }}"
-                                    data-webp="{{ url('/master.webp') }}"
-                                    data-webp2x="{{ url('/master@2x.webp') }}"
+                                    src="{{ url('/master-420.png') }}"
+                                    srcset="{{ url('/master-420.png') }} 420w, {{ url('/master-840.png') }} 840w"
+                                    sizes="(min-width: 768px) 420px, 360px"
                                     alt="Мастер электроэпиляции"
                                     class="block w-full max-w-[360px] md:max-w-[420px] h-auto object-cover"
                                     width="420"
-                                    height="520"
                                     decoding="async"
-                                    fetchpriority="high"
-                                >
+                                />
                                 <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/75 via-white/20 to-transparent"></div>
                             </div>
                             <div class="mt-4 flex items-center justify-between gap-3">
@@ -430,7 +428,7 @@
                     <div class="mt-0.5 h-6 w-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs">✔</div>
                     <div>
                         <div class="text-sm font-semibold">Опытный мастер</div>
-                        <div class="mt-1 text-sm text-slate-700">Процедуры проводит Бачурина Елена — мастер с большим стажем работы в электроэпиляции. Глубокое понимание техники, кожи и роста волос позволяет добиваться стабильного и безопасного результата.</div>
+                        <div class="mt-1 text-sm text-slate-700">Процедуры проводит Бачурина Елена — мастер с большим стажем работы в электроэпиляции. Глубокое понимание техники, кожи и роста волос позволяют добиваться стабильного и безопасного результата.</div>
                     </div>
                 </div>
             </div>
@@ -1253,24 +1251,6 @@
         window.addEventListener('scroll', syncStickyCta, { passive: true });
         window.addEventListener('resize', syncStickyCta);
         syncStickyCta();
-
-        const masterPhoto = $('masterPhoto');
-        if (masterPhoto) {
-            const webp = masterPhoto.dataset.webp;
-            const webp2x = masterPhoto.dataset.webp2x;
-            const preferred = (window.devicePixelRatio || 1) > 1.2 ? (webp2x || webp) : webp;
-
-            if (preferred) {
-                fetch(preferred, { method: 'HEAD', cache: 'no-store' })
-                    .then((r) => {
-                        if (!r.ok) return;
-                        const ct = (r.headers.get('content-type') || '').toLowerCase();
-                        if (ct && !ct.includes('image/webp')) return;
-                        masterPhoto.src = preferred;
-                    })
-                    .catch(() => {});
-            }
-        }
 
         const masterCard = $('masterCard');
         const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
