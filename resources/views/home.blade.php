@@ -96,6 +96,10 @@
             will-change: opacity, transform, filter;
         }
 
+        @media (hover: none) and (pointer: coarse) {
+            .intro-content { filter: none; }
+        }
+
         .master-card {
             transform: translate3d(0,0,0);
             will-change: transform;
@@ -1236,6 +1240,7 @@
 
         const stickyCta = $('stickyCta');
         const isMobile = window.matchMedia && window.matchMedia('(max-width: 639px)').matches;
+        const isTouch = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
         const syncStickyCta = () => {
             if (!stickyCta || !isMobile) return;
             const modalOpen = bookingModal && !bookingModal.classList.contains('hidden');
@@ -1254,7 +1259,7 @@
 
         const masterCard = $('masterCard');
         const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (masterCard && !reduceMotion) {
+        if (masterCard && !reduceMotion && !isTouch) {
             let rafCard = 0;
             const updateCard = () => {
                 rafCard = 0;
@@ -1277,7 +1282,7 @@
 
         const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const intro = $('intro');
-        if (!prefersReducedMotion && intro) {
+        if (!prefersReducedMotion && intro && !isTouch) {
             let raf = 0;
 
             const updateIntro = () => {
@@ -1299,7 +1304,7 @@
             scheduleIntro();
         }
 
-        if (!prefersReducedMotion && intro) {
+        if (!prefersReducedMotion && intro && !isTouch) {
             const content = $('content');
             let snapTimer = 0;
             let snapping = false;
