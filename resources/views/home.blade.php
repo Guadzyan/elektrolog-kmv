@@ -34,6 +34,15 @@
         ],
         'serviceType' => 'Электроэпиляция',
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(106491393, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106491393" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
@@ -831,6 +840,14 @@
 <script>
     const $ = (id) => document.getElementById(id);
 
+    const METRIKA_ID = 106491393;
+    const reachGoal = (goal, params) => {
+        try {
+            if (typeof window.ym !== 'function') return;
+            window.ym(METRIKA_ID, 'reachGoal', String(goal), params || {});
+        } catch (e) {}
+    };
+
     let preferredDateChosen = false;
     let lastBookingPayload = null;
 
@@ -884,10 +901,13 @@
         const retryBtn = $('retryBooking');
         if (retryBtn) retryBtn.disabled = true;
 
+        reachGoal('booking_retry');
+
         try {
             const data = await submitBooking(lastBookingPayload);
             const id = data?.id ? String(data.id) : '';
             const safeId = id ? escapeHtml(id) : '—';
+            reachGoal('booking_success', { id: id || null, via: 'retry' });
             const okHtml = `
                 <div class="font-medium">Заявка отправлена.</div>
                 <div class="mt-1 text-sm">Номер заявки: <span class="font-semibold">#${safeId}</span></div>
@@ -1044,10 +1064,16 @@
         if (submitBtn) submitBtn.disabled = true;
         lastBookingPayload = payload;
 
+        reachGoal('submit_booking', {
+            has_date: !!payload.starts_at,
+            duration_minutes: payload.duration_minutes || null,
+        });
+
         try {
             const data = await submitBooking(payload);
             const id = data?.id ? String(data.id) : '';
             const safeId = id ? escapeHtml(id) : '—';
+            reachGoal('booking_success', { id: id || null, via: 'submit' });
             const html = `
                 <div class="font-medium">Заявка отправлена.</div>
                 <div class="mt-1 text-sm">Номер заявки: <span class="font-semibold">#${safeId}</span></div>
@@ -1068,6 +1094,7 @@
             lastBookingPayload = null;
         } catch (err) {
             const msg = err && err.message ? err.message : 'Не удалось отправить заявку. Проверьте данные.';
+            reachGoal('booking_error', { message: String(msg).slice(0, 180) });
             const html = `
                 <div class="font-medium">Ошибка отправки</div>
                 <div class="mt-1 text-sm">${escapeHtml(msg)}</div>
@@ -1212,6 +1239,12 @@
             });
         }
 
+        if ($('heroBookBtn')) {
+            $('heroBookBtn').addEventListener('click', () => {
+                reachGoal('open_booking', { source: 'hero_button' });
+            });
+        }
+
         openIgPopupOnce();
 
         document.addEventListener('click', (e) => {
@@ -1231,9 +1264,30 @@
                     heroPriceBtn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900', 'hover:bg-slate-800');
                     heroPriceBtn.classList.add('border-slate-300', 'bg-white/70', 'text-slate-900', 'hover:bg-slate-50');
                 }
+                reachGoal('open_booking', { source: 'anchor' });
                 openModal();
             }
         });
+
+        document.addEventListener('click', (e) => {
+            const el = e.target instanceof Element ? e.target.closest('a[href]') : null;
+            if (!el) return;
+            const href = el.getAttribute('href') || '';
+            const label = (el.getAttribute('aria-label') || el.textContent || '').trim().slice(0, 80);
+
+            if (href.startsWith('tel:')) {
+                reachGoal('click_call', { label });
+                return;
+            }
+
+            const isInstagram = /instagram\.com\//i.test(href);
+            const isTelegram = /t\.me\//i.test(href);
+            const isWhatsapp = /wa\.me\//i.test(href);
+
+            if (isInstagram) reachGoal('click_instagram', { label });
+            if (isTelegram) reachGoal('click_telegram', { label });
+            if (isWhatsapp) reachGoal('click_whatsapp', { label });
+        }, { capture: true });
 
         $('year').textContent = new Date().getFullYear();
         loadPrice();
