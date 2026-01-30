@@ -498,6 +498,34 @@
         </div>
     </section>
 
+    <section id="certificates" class="mx-auto max-w-6xl px-4 pb-16">
+        <div class="reveal">
+            <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Сертификаты и обучение</h2>
+            <p class="mt-2 text-sm text-slate-700">Подтверждение квалификации и регулярного повышения навыков.</p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3 md:gap-4">
+            @for ($i = 1; $i <= 9; $i++)
+                <button
+                    type="button"
+                    class="reveal card overflow-hidden rounded-3xl glass p-0 text-left"
+                    data-cert-src="{{ url('/certificates/cert-' . $i . '.jpeg') }}"
+                    aria-label="Открыть сертификат {{ $i }}"
+                >
+                    <div class="aspect-[4/3] w-full bg-white/40">
+                        <img
+                            src="{{ url('/certificates/cert-' . $i . '.jpeg') }}"
+                            alt="Сертификат {{ $i }}"
+                            class="h-full w-full object-cover"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                </button>
+            @endfor
+        </div>
+    </section>
+
     <section id="faq" class="mx-auto max-w-6xl px-4 pb-16">
         <div class="reveal">
             <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Вопрос‑ответ</h2>
@@ -792,6 +820,20 @@
     </a>
 </div>
 
+<div id="certModal" class="fixed inset-0 z-50 hidden" aria-hidden="true">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+    <div class="relative mx-auto flex h-full max-w-6xl items-center justify-center px-4 py-6">
+        <div class="relative w-full">
+            <button id="certClose" type="button" class="btn absolute -top-3 right-0 inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/80 px-4 py-2 text-sm font-medium text-slate-900 hover:bg-slate-50">
+                Закрыть
+            </button>
+            <div class="glass glass-strong overflow-hidden rounded-[2rem] p-2 md:p-4">
+                <img id="certModalImg" src="" alt="Сертификат" class="max-h-[75vh] w-full object-contain" />
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="igPopup" class="fixed inset-0 z-[60] hidden">
     <div id="igPopupBackdrop" class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
     <div class="relative mx-auto max-w-lg px-4 py-10">
@@ -847,6 +889,45 @@
             window.ym(METRIKA_ID, 'reachGoal', String(goal), params || {});
         } catch (e) {}
     };
+
+    const certModal = $('certModal');
+    const certClose = $('certClose');
+    const certModalImg = $('certModalImg');
+
+    const openCert = (src) => {
+        if (!certModal || !certModalImg) return;
+        certModalImg.src = src;
+        certModal.classList.remove('hidden');
+        certModal.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('overflow-hidden');
+        reachGoal('open_certificate');
+    };
+
+    const closeCert = () => {
+        if (!certModal || !certModalImg) return;
+        certModal.classList.add('hidden');
+        certModal.setAttribute('aria-hidden', 'true');
+        certModalImg.src = '';
+        document.documentElement.classList.remove('overflow-hidden');
+    };
+
+    document.addEventListener('click', (e) => {
+        const btn = e.target instanceof Element ? e.target.closest('button[data-cert-src]') : null;
+        if (!btn) return;
+        const src = btn.getAttribute('data-cert-src') || '';
+        if (!src) return;
+        openCert(src);
+    });
+
+    if (certClose) certClose.addEventListener('click', closeCert);
+    if (certModal) {
+        certModal.addEventListener('click', (e) => {
+            if (e.target === certModal || e.target === certModal.firstElementChild) closeCert();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !certModal.classList.contains('hidden')) closeCert();
+        });
+    }
 
     let preferredDateChosen = false;
     let lastBookingPayload = null;
