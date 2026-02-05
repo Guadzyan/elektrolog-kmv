@@ -315,12 +315,15 @@
                             Бачурина Елена
                         </div>
                         <div class="mt-10 flex flex-col sm:flex-row gap-3">
-                            <a href="https://www.instagram.com/elektrolog_kmv/?utm_source=site&utm_medium=intro_button&utm_campaign=ig_follow" target="_blank" rel="noopener noreferrer" class="btn w-full sm:w-auto inline-flex justify-center rounded-full px-6 py-3 text-sm font-medium text-white" style="background: linear-gradient(90deg, #F58529, #DD2A7B, #8134AF, #515BD4);">
-                                Instagram • подписаться
+                            <a href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer" class="btn w-full sm:w-auto inline-flex justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">
+                                Написать в WhatsApp
                             </a>
                             <a href="#book" class="btn w-full sm:w-auto inline-flex justify-center rounded-full border border-slate-300 bg-white/70 px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-50">
                                 Записаться
                             </a>
+                        </div>
+                        <div class="mt-4 text-sm text-slate-600">
+                            Отвечаю в течение 10 минут • стерильность • сертификаты
                         </div>
                     </div>
 
@@ -389,12 +392,20 @@
                         <span aria-hidden="true">→</span>
                     </a>
                     <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                        <a href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer" class="btn w-full sm:w-auto inline-flex justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">
+                            Написать в WhatsApp
+                        </a>
                         <button id="heroBookBtn" type="button" class="btn w-full sm:w-auto inline-flex justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">
                             Записаться
                         </button>
                         <button id="heroPriceBtn" type="button" class="btn w-full sm:w-auto inline-flex justify-center rounded-full border border-slate-300 bg-white/70 px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-50">
                             Прайс
                         </button>
+                    </div>
+                    <div class="mt-4 grid gap-2 text-sm text-slate-700 max-w-xl">
+                        <div class="flex items-start gap-2"><span class="mt-0.5">•</span><span>Одноразовые стерильные иглы, вскрываются при клиенте</span></div>
+                        <div class="flex items-start gap-2"><span class="mt-0.5">•</span><span>Стаж 7 лет и регулярное обучение (смотрите сертификаты)</span></div>
+                        <div class="flex items-start gap-2"><span class="mt-0.5">•</span><span>Можно просто задать вопрос — подскажу стоимость и свободные окна</span></div>
                     </div>
                     <div id="heroPriceHost" class="mt-8 hidden"></div>
                     <div class="mt-8 max-w-xl">
@@ -651,9 +662,14 @@
         <div class="grid gap-10 md:grid-cols-2">
             <div>
                 <h2 class="text-2xl font-semibold tracking-tight">Онлайн‑запись</h2>
-                <p class="mt-3 text-sm text-slate-700">Выберите дату → время → отправьте заявку.</p>
+                <p class="mt-3 text-sm text-slate-700">Можно быстро оставить заявку — я отвечу и предложу ближайшие окна.</p>
 
-                <div class="mt-8 rounded-3xl glass glass-strong p-6 reveal">
+                <div class="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 p-1 text-xs">
+                    <button id="bookModeOnline" type="button" class="btn rounded-full bg-slate-900 px-4 py-2 font-medium text-white">Выбрать время</button>
+                    <button id="bookModeQuick" type="button" class="btn rounded-full border border-slate-300 bg-white/70 px-4 py-2 font-medium text-slate-900 hover:bg-slate-50">Быстрая заявка</button>
+                </div>
+
+                <div id="bookingOnlineBlock" class="mt-8 rounded-3xl glass glass-strong p-6 reveal">
                     <div class="text-sm font-medium">Дата</div>
                     <div class="mt-3 flex gap-3 items-center">
                         <input id="date" type="date" class="w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm" />
@@ -665,6 +681,18 @@
                         <div id="slots" class="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
                         <div id="slotsEmpty" class="mt-3 hidden text-sm text-slate-600">На выбранную дату слотов нет. Попробуйте другую дату.</div>
                     </div>
+                </div>
+
+                <div id="bookingQuickBlock" class="mt-8 hidden rounded-3xl glass glass-strong p-6 reveal">
+                    <div class="text-sm font-medium">Быстрая заявка</div>
+                    <div class="mt-2 text-sm text-slate-700">Оставьте имя и телефон — я напишу/позвоню и предложу свободные окна.</div>
+                    <form id="quickLeadForm" class="mt-4 grid gap-3">
+                        <input name="name" placeholder="Ваше имя" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
+                        <input name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
+                        <textarea name="note" rows="3" placeholder="Комментарий (необязательно)" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm"></textarea>
+                        <button class="btn mt-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800" type="submit">Отправить заявку</button>
+                        <div id="quickMsg" class="hidden rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800"></div>
+                    </form>
                 </div>
             </div>
 
@@ -971,8 +999,35 @@
         el.textContent = text;
     }
 
+    function setQuickMsg(text, type = 'info', opts = {}) {
+        const el = $('quickMsg');
+        if (!el) return;
+        el.classList.remove('hidden');
+        el.classList.remove('border-emerald-200', 'bg-emerald-50', 'text-emerald-900', 'border-rose-200', 'bg-rose-50', 'text-rose-900');
+        if (type === 'success') {
+            el.classList.add('border-emerald-200', 'bg-emerald-50', 'text-emerald-900');
+        }
+        if (type === 'error') {
+            el.classList.add('border-rose-200', 'bg-rose-50', 'text-rose-900');
+        }
+
+        if (opts && opts.html) {
+            el.innerHTML = opts.html;
+            return;
+        }
+
+        el.textContent = text;
+    }
+
     function clearMsg() {
         const el = $('formMsg');
+        el.classList.add('hidden');
+        el.textContent = '';
+    }
+
+    function clearQuickMsg() {
+        const el = $('quickMsg');
+        if (!el) return;
         el.classList.add('hidden');
         el.textContent = '';
     }
@@ -1213,6 +1268,12 @@
         const bookingModal = $('bookingModal');
         const bookingClose = $('bookingClose');
 
+        const bookModeOnline = $('bookModeOnline');
+        const bookModeQuick = $('bookModeQuick');
+        const bookingOnlineBlock = $('bookingOnlineBlock');
+        const bookingQuickBlock = $('bookingQuickBlock');
+        const quickLeadForm = $('quickLeadForm');
+
         const igPopup = $('igPopup');
         const igPopupClose = $('igPopupClose');
         const igPopupLater = $('igPopupLater');
@@ -1253,6 +1314,94 @@
             const inner = bookSection.firstElementChild;
             if (inner) heroBookHost.appendChild(inner);
             bookSection.remove();
+        }
+
+        const setBookMode = (mode) => {
+            const isQuick = mode === 'quick';
+            if (bookingOnlineBlock) bookingOnlineBlock.classList.toggle('hidden', isQuick);
+            if (bookingQuickBlock) bookingQuickBlock.classList.toggle('hidden', !isQuick);
+            if (bookModeOnline) {
+                bookModeOnline.classList.toggle('bg-slate-900', !isQuick);
+                bookModeOnline.classList.toggle('text-white', !isQuick);
+                bookModeOnline.classList.toggle('border-slate-300', isQuick);
+                bookModeOnline.classList.toggle('bg-white/70', isQuick);
+                bookModeOnline.classList.toggle('text-slate-900', isQuick);
+                bookModeOnline.classList.toggle('hover:bg-slate-50', isQuick);
+            }
+            if (bookModeQuick) {
+                bookModeQuick.classList.toggle('bg-slate-900', isQuick);
+                bookModeQuick.classList.toggle('text-white', isQuick);
+                bookModeQuick.classList.toggle('border-slate-300', !isQuick);
+                bookModeQuick.classList.toggle('bg-white/70', !isQuick);
+                bookModeQuick.classList.toggle('text-slate-900', !isQuick);
+                bookModeQuick.classList.toggle('hover:bg-slate-50', !isQuick);
+            }
+
+            clearMsg();
+            clearQuickMsg();
+
+            if (isQuick) {
+                reachGoal('open_quick_lead');
+            }
+        };
+
+        if (bookModeOnline) bookModeOnline.addEventListener('click', () => setBookMode('online'));
+        if (bookModeQuick) bookModeQuick.addEventListener('click', () => setBookMode('quick'));
+
+        if (quickLeadForm) {
+            quickLeadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                clearQuickMsg();
+
+                const form = e.currentTarget;
+                const fd = new FormData(form);
+                const payload = Object.fromEntries(fd.entries());
+
+                payload.duration_minutes = payload.duration_minutes || 60;
+                payload.starts_at = '';
+
+                try {
+                    const params = new URLSearchParams(window.location.search || '');
+                    payload.utm_source = params.get('utm_source') || '';
+                    payload.utm_medium = params.get('utm_medium') || '';
+                    payload.utm_campaign = params.get('utm_campaign') || '';
+                    payload.utm_content = params.get('utm_content') || '';
+                    payload.utm_term = params.get('utm_term') || '';
+                    payload.landing_url = window.location.href;
+                    payload.referrer = document.referrer || '';
+                } catch (e2) {
+                    // ignore
+                }
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) submitBtn.disabled = true;
+
+                reachGoal('submit_quick_lead');
+
+                try {
+                    const data = await submitBooking(payload);
+                    const id = data?.id ? String(data.id) : '';
+                    reachGoal('quick_lead_success', { id: id || null });
+                    const safeId = id ? escapeHtml(id) : '—';
+                    const html = `
+                        <div class="font-medium">Заявка отправлена.</div>
+                        <div class="mt-1 text-sm">Номер заявки: <span class="font-semibold">#${safeId}</span></div>
+                        <div class="mt-2 text-sm">Я напишу/позвоню и предложу ближайшие окна.</div>
+                        <div class="mt-3 flex flex-col sm:flex-row gap-2">
+                            <a class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800" href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
+                            <a class="btn inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+                        </div>
+                    `;
+                    setQuickMsg('', 'success', { html });
+                    form.reset();
+                } catch (err) {
+                    const msg = err && err.message ? err.message : 'Не удалось отправить заявку. Проверьте данные.';
+                    reachGoal('quick_lead_error', { message: String(msg).slice(0, 180) });
+                    setQuickMsg(msg, 'error');
+                } finally {
+                    if (submitBtn) submitBtn.disabled = false;
+                }
+            });
         }
 
         const closeModal = () => {
