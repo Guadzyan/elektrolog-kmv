@@ -315,8 +315,11 @@
                             Бачурина Елена
                         </div>
                         <div class="mt-10 flex flex-col sm:flex-row gap-3">
-                            <a href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer" class="btn w-full sm:w-auto inline-flex justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">
-                                Написать в WhatsApp
+                            <a href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer" class="btn w-full sm:w-auto inline-flex justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">
+                                Написать в Telegram
+                            </a>
+                            <a href="https://www.instagram.com/elektrolog_kmv/?utm_source=site&utm_medium=intro_button&utm_campaign=ig_follow" target="_blank" rel="noopener noreferrer" class="btn w-full sm:w-auto inline-flex justify-center rounded-full px-6 py-3 text-sm font-medium text-white" style="background: linear-gradient(90deg, #F58529, #DD2A7B, #8134AF, #515BD4);">
+                                Instagram
                             </a>
                             <a href="#book" class="btn w-full sm:w-auto inline-flex justify-center rounded-full border border-slate-300 bg-white/70 px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-50">
                                 Записаться
@@ -392,8 +395,8 @@
                         <span aria-hidden="true">→</span>
                     </a>
                     <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                        <a href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer" class="btn w-full sm:w-auto inline-flex justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">
-                            Написать в WhatsApp
+                        <a href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer" class="btn w-full sm:w-auto inline-flex justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">
+                            Написать в Telegram
                         </a>
                         <button id="heroBookBtn" type="button" class="btn w-full sm:w-auto inline-flex justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">
                             Записаться
@@ -659,74 +662,19 @@
     </section>
 
     <section id="book" class="mx-auto max-w-6xl px-4 py-16">
-        <div class="grid gap-10 md:grid-cols-2">
-            <div>
-                <h2 class="text-2xl font-semibold tracking-tight">Онлайн‑запись</h2>
-                <p class="mt-3 text-sm text-slate-700">Можно быстро оставить заявку — я отвечу и предложу ближайшие окна.</p>
+        <div class="max-w-2xl">
+            <h2 class="text-2xl font-semibold tracking-tight">Запись</h2>
+            <p class="mt-3 text-sm text-slate-700">Оставьте имя и телефон — я напишу в Telegram и предложу ближайшие окна.</p>
 
-                <div class="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 p-1 text-xs">
-                    <button id="bookModeOnline" type="button" class="btn rounded-full bg-slate-900 px-4 py-2 font-medium text-white">Выбрать время</button>
-                    <button id="bookModeQuick" type="button" class="btn rounded-full border border-slate-300 bg-white/70 px-4 py-2 font-medium text-slate-900 hover:bg-slate-50">Быстрая заявка</button>
-                </div>
-
-                <div id="bookingOnlineBlock" class="mt-8 rounded-3xl glass glass-strong p-6 reveal">
-                    <div class="text-sm font-medium">Дата</div>
-                    <div class="mt-3 flex gap-3 items-center">
-                        <input id="date" type="date" class="w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm" />
-                        <button id="loadSlots" class="btn rounded-2xl bg-slate-900 px-4 py-3 text-sm font-medium text-white hover:bg-slate-800">Показать время</button>
-                    </div>
-
-                    <div class="mt-6">
-                        <div class="text-sm font-medium">Время</div>
-                        <div id="slots" class="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
-                        <div id="slotsEmpty" class="mt-3 hidden text-sm text-slate-600">На выбранную дату слотов нет. Попробуйте другую дату.</div>
-                    </div>
-                </div>
-
-                <div id="bookingQuickBlock" class="mt-8 hidden rounded-3xl glass glass-strong p-6 reveal">
-                    <div class="text-sm font-medium">Быстрая заявка</div>
-                    <div class="mt-2 text-sm text-slate-700">Оставьте имя и телефон — я напишу/позвоню и предложу свободные окна.</div>
-                    <form id="quickLeadForm" class="mt-4 grid gap-3">
-                        <input name="name" placeholder="Ваше имя" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
-                        <input name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
-                        <textarea name="note" rows="3" placeholder="Комментарий (необязательно)" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm"></textarea>
-                        <button class="btn mt-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800" type="submit">Отправить заявку</button>
-                        <div id="quickMsg" class="hidden rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800"></div>
-                    </form>
-                </div>
-            </div>
-
-            <div>
-                <div class="rounded-3xl glass glass-strong p-6 reveal">
-                    <div class="text-sm font-medium">Данные</div>
-                    <form id="bookingForm" class="mt-4 grid gap-3">
-                        <input name="name" placeholder="Ваше имя" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
-                        <input id="phone" name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
-                        <input name="telegram_username" placeholder="Telegram (необязательно)" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" />
-
-                        <div class="grid grid-cols-2 gap-3">
-                            <select name="needle_type" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm">
-                                <option value="">Тип иглы (необязательно)</option>
-                                <option value="body">Тело</option>
-                                <option value="face">Лицо</option>
-                            </select>
-                            <select name="duration_minutes" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm">
-                                <option value="60">Длительность: 60 мин</option>
-                                <option value="90">90 мин</option>
-                                <option value="120">120 мин</option>
-                            </select>
-                        </div>
-
-                        <textarea name="note" rows="3" placeholder="Комментарий (необязательно)" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm"></textarea>
-
-                        <input id="starts_at" name="starts_at" type="hidden" />
-
-                        <button class="btn mt-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800" type="submit">Отправить</button>
-
-                        <div id="formMsg" class="hidden rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800"></div>
-                    </form>
-                </div>
-
+            <div class="mt-8 rounded-3xl glass glass-strong p-6 reveal">
+                <div class="text-sm font-medium">Быстрая заявка</div>
+                <form id="quickLeadForm" class="mt-4 grid gap-3">
+                    <input name="name" placeholder="Ваше имя" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
+                    <input name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
+                    <textarea name="note" rows="3" placeholder="Комментарий (необязательно)" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm"></textarea>
+                    <button class="btn mt-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800" type="submit">Отправить заявку</button>
+                    <div id="quickMsg" class="hidden rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800"></div>
+                </form>
             </div>
         </div>
     </section>
@@ -794,24 +742,23 @@
                     </div>
                 </a>
 
-                <a class="reveal card contact-card rounded-3xl glass p-6 group" style="--brand-rgb: 37, 211, 102" href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer">
+                <a class="reveal card contact-card rounded-3xl glass p-6 group" style="--brand-rgb: 15, 23, 42" href="tel:+79604949073">
                     <div class="flex items-start justify-between gap-4">
                         <div>
                             <div class="flex items-center gap-2">
-                                <div class="text-sm text-slate-500">WhatsApp</div>
-                                <span class="inline-flex items-center rounded-full border border-slate-200 bg-white/60 px-2 py-0.5 text-[11px] text-slate-600">быстро</span>
+                                <div class="text-sm text-slate-500">Телефон</div>
+                                <span class="inline-flex items-center rounded-full border border-slate-200 bg-white/60 px-2 py-0.5 text-[11px] text-slate-600">звонок</span>
                             </div>
                             <div class="mt-2 text-lg font-semibold tracking-tight group-hover:text-slate-900">+7 960 494‑90‑73</div>
-                            <div class="mt-1 text-sm text-slate-700">Запись и вопросы</div>
+                            <div class="mt-1 text-sm text-slate-700">Позвоните — отвечу и подберу время</div>
                             <div class="mt-4 inline-flex items-center gap-2 rounded-2xl px-3 py-2 text-xs font-medium contact-cta">
-                                Написать
+                                Позвонить
                                 <span aria-hidden="true">→</span>
                             </div>
                         </div>
                         <div class="h-11 w-11 rounded-2xl flex items-center justify-center contact-icon">
-                            <svg class="block" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-                                <circle cx="12" cy="12" r="10" fill="#25D366" fill-opacity="0.95"/>
-                                <path d="M15.6 14.8 14.5 15.6c-.4.3-1 .3-1.5 0-1.2-.7-2.2-1.7-2.9-2.9-.3-.5-.3-1.1 0-1.5l.8-1.1c.2-.3.2-.8 0-1.1L9.8 7.2c-.3-.5-.9-.7-1.4-.4l-.6.3c-.8.4-1.3 1.2-1.3 2.1 0 4.6 3.7 8.3 8.3 8.3.9 0 1.7-.5 2.1-1.3l.3-.6c.3-.5.1-1.1-.4-1.4l-1.6-.8c-.3-.2-.7-.1-1 .1Z" fill="white" fill-opacity="0.95"/>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M20 13.5c-1.2 0-2.4-.2-3.5-.6-.3-.1-.6 0-.8.2l-2.2 2.2c-2.9-1.5-5.3-3.9-6.8-6.8l2.2-2.2c.2-.2.3-.5.2-.8-.4-1.1-.6-2.3-.6-3.5C8.5 2.7 8.3 2.5 8 2.5H4.5C4.2 2.5 4 2.7 4 3c0 10 7 17 17 17 .3 0 .5-.2.5-.5V14c0-.3-.2-.5-.5-.5H20z" fill="currentColor"/>
                             </svg>
                         </div>
                     </div>
@@ -982,6 +929,7 @@
 
     function setMsg(text, type = 'info', opts = {}) {
         const el = $('formMsg');
+        if (!el) return;
         el.classList.remove('hidden');
         el.classList.remove('border-emerald-200', 'bg-emerald-50', 'text-emerald-900', 'border-rose-200', 'bg-rose-50', 'text-rose-900');
         if (type === 'success') {
@@ -1021,6 +969,7 @@
 
     function clearMsg() {
         const el = $('formMsg');
+        if (!el) return;
         el.classList.add('hidden');
         el.textContent = '';
     }
@@ -1048,8 +997,8 @@
                 <div class="font-medium">Заявка отправлена.</div>
                 <div class="mt-1 text-sm">Номер заявки: <span class="font-semibold">#${safeId}</span></div>
                 <div class="mt-3 flex flex-col sm:flex-row gap-2">
-                    <a class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800" href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
-                    <a class="btn inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+                    <a class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800" href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+                    <a class="btn inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" href="tel:+79604949073">Позвонить</a>
                 </div>
             `;
             setMsg('', 'success', { html: okHtml });
@@ -1146,13 +1095,19 @@
         }
     }
 
-    $('loadSlots').addEventListener('click', () => {
-        preferredDateChosen = true;
-        loadSlots();
-    });
-    document.querySelector('select[name=duration_minutes]').addEventListener('change', () => {
-        if ($('date').value) loadSlots();
-    });
+    const loadSlotsBtn = $('loadSlots');
+    if (loadSlotsBtn) {
+        loadSlotsBtn.addEventListener('click', () => {
+            preferredDateChosen = true;
+            loadSlots();
+        });
+    }
+    const durationSelect = document.querySelector('select[name=duration_minutes]');
+    if (durationSelect) {
+        durationSelect.addEventListener('change', () => {
+            if ($('date')?.value) loadSlots();
+        });
+    }
 
     async function submitBooking(payload) {
         const res = await fetch('/api/public/appointments', {
@@ -1170,7 +1125,8 @@
         return await res.json().catch(() => ({}));
     }
 
-    $('bookingForm').addEventListener('submit', async (e) => {
+    const bookingForm = $('bookingForm');
+    if (bookingForm) bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         clearMsg();
 
@@ -1215,8 +1171,7 @@
                 <div class="mt-1 text-sm">Номер заявки: <span class="font-semibold">#${safeId}</span></div>
                 <div class="mt-2 text-sm">Я подтвержу запись и напишу в ближайшее время.</div>
                 <div class="mt-3 flex flex-col sm:flex-row gap-2">
-                    <a class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800" href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
-                    <a class="btn inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+                    <a class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800" href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
                     <a class="btn inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" href="tel:+79604949073">Позвонить</a>
                 </div>
             `;
@@ -1244,7 +1199,8 @@
         }
     });
 
-    $('formMsg').addEventListener('click', (e) => {
+    const formMsg = $('formMsg');
+    if (formMsg) formMsg.addEventListener('click', (e) => {
         const btn = e.target instanceof Element ? e.target.closest('#retryBooking') : null;
         if (!btn) return;
         const form = $('bookingForm');
@@ -1268,10 +1224,6 @@
         const bookingModal = $('bookingModal');
         const bookingClose = $('bookingClose');
 
-        const bookModeOnline = $('bookModeOnline');
-        const bookModeQuick = $('bookModeQuick');
-        const bookingOnlineBlock = $('bookingOnlineBlock');
-        const bookingQuickBlock = $('bookingQuickBlock');
         const quickLeadForm = $('quickLeadForm');
 
         const igPopup = $('igPopup');
@@ -1316,38 +1268,6 @@
             bookSection.remove();
         }
 
-        const setBookMode = (mode) => {
-            const isQuick = mode === 'quick';
-            if (bookingOnlineBlock) bookingOnlineBlock.classList.toggle('hidden', isQuick);
-            if (bookingQuickBlock) bookingQuickBlock.classList.toggle('hidden', !isQuick);
-            if (bookModeOnline) {
-                bookModeOnline.classList.toggle('bg-slate-900', !isQuick);
-                bookModeOnline.classList.toggle('text-white', !isQuick);
-                bookModeOnline.classList.toggle('border-slate-300', isQuick);
-                bookModeOnline.classList.toggle('bg-white/70', isQuick);
-                bookModeOnline.classList.toggle('text-slate-900', isQuick);
-                bookModeOnline.classList.toggle('hover:bg-slate-50', isQuick);
-            }
-            if (bookModeQuick) {
-                bookModeQuick.classList.toggle('bg-slate-900', isQuick);
-                bookModeQuick.classList.toggle('text-white', isQuick);
-                bookModeQuick.classList.toggle('border-slate-300', !isQuick);
-                bookModeQuick.classList.toggle('bg-white/70', !isQuick);
-                bookModeQuick.classList.toggle('text-slate-900', !isQuick);
-                bookModeQuick.classList.toggle('hover:bg-slate-50', !isQuick);
-            }
-
-            clearMsg();
-            clearQuickMsg();
-
-            if (isQuick) {
-                reachGoal('open_quick_lead');
-            }
-        };
-
-        if (bookModeOnline) bookModeOnline.addEventListener('click', () => setBookMode('online'));
-        if (bookModeQuick) bookModeQuick.addEventListener('click', () => setBookMode('quick'));
-
         if (quickLeadForm) {
             quickLeadForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -1386,10 +1306,9 @@
                     const html = `
                         <div class="font-medium">Заявка отправлена.</div>
                         <div class="mt-1 text-sm">Номер заявки: <span class="font-semibold">#${safeId}</span></div>
-                        <div class="mt-2 text-sm">Я напишу/позвоню и предложу ближайшие окна.</div>
+                        <div class="mt-2 text-sm">Я напишу в Telegram и предложу ближайшие окна.</div>
                         <div class="mt-3 flex flex-col sm:flex-row gap-2">
-                            <a class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800" href="https://wa.me/79604949073" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
-                            <a class="btn inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+                            <a class="btn inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800" href="https://t.me/elektrolog_kmv1" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
                         </div>
                     `;
                     setQuickMsg('', 'success', { html });
