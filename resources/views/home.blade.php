@@ -672,6 +672,18 @@
             <h2 class="text-2xl font-semibold tracking-tight">Запись</h2>
             <p class="mt-3 text-sm text-slate-700">Оставьте имя и телефон — я напишу в Telegram и предложу ближайшие окна.</p>
 
+            <div class="mt-8 rounded-3xl glass glass-strong p-6 reveal">
+                <div class="text-sm font-medium">Быстрая заявка</div>
+                <form id="quickLeadForm" class="mt-4 grid gap-3">
+                    <input name="name" placeholder="Ваше имя" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
+                    <input id="quickPhone" name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
+                    <textarea name="note" rows="3" placeholder="Комментарий (необязательно)" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm"></textarea>
+                    <button class="btn mt-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800" type="submit">Отправить заявку</button>
+                    <div class="text-xs text-slate-600">Не спамлю. Только по записи и вопросам по процедуре.</div>
+                    <div id="quickMsg" class="hidden rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800"></div>
+                </form>
+            </div>
+
             <div class="mt-6 rounded-3xl glass glass-strong p-6 reveal">
                 <div class="text-sm font-semibold">Частые зоны</div>
                 <div class="mt-3 flex flex-wrap gap-2">
@@ -708,18 +720,6 @@
             <div class="mt-6 rounded-3xl glass glass-strong p-6 reveal">
                 <div class="text-sm font-semibold">Где находимся</div>
                 <div class="mt-2 text-sm text-slate-700">Пятигорск, ул. Партизанская — в 3 минутах от автовокзала.</div>
-            </div>
-
-            <div class="mt-8 rounded-3xl glass glass-strong p-6 reveal">
-                <div class="text-sm font-medium">Быстрая заявка</div>
-                <form id="quickLeadForm" class="mt-4 grid gap-3">
-                    <input name="name" placeholder="Ваше имя" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
-                    <input id="quickPhone" name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
-                    <textarea name="note" rows="3" placeholder="Комментарий (необязательно)" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm"></textarea>
-                    <button class="btn mt-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800" type="submit">Отправить заявку</button>
-                    <div class="text-xs text-slate-600">Не спамлю. Только по записи и вопросам по процедуре.</div>
-                    <div id="quickMsg" class="hidden rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800"></div>
-                </form>
             </div>
         </div>
     </section>
