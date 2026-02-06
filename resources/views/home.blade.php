@@ -714,7 +714,7 @@
                 <div class="text-sm font-medium">Быстрая заявка</div>
                 <form id="quickLeadForm" class="mt-4 grid gap-3">
                     <input name="name" placeholder="Ваше имя" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
-                    <input name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
+                    <input id="quickPhone" name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
                     <textarea name="note" rows="3" placeholder="Комментарий (необязательно)" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm"></textarea>
                     <button class="btn mt-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800" type="submit">Отправить заявку</button>
                     <div class="text-xs text-slate-600">Не спамлю. Только по записи и вопросам по процедуре.</div>
@@ -1325,6 +1325,85 @@
             const inner = bookSection.firstElementChild;
             if (inner) heroBookHost.appendChild(inner);
             bookSection.remove();
+        }
+
+        const phoneInput = $('quickPhone');
+        if (phoneInput) {
+            const onlyDigits = (s) => String(s || '').replace(/\D+/g, '');
+
+            const digitIndexFromCaret = (value, caretPos) => {
+                let idx = 0;
+                for (let i = 0; i < Math.min(caretPos, value.length); i++) {
+                    if (/\d/.test(value[i])) idx++;
+                }
+                return idx;
+            };
+
+            const caretFromDigitIndex = (value, digitIdx) => {
+                if (digitIdx <= 0) return 0;
+                let seen = 0;
+                for (let i = 0; i < value.length; i++) {
+                    if (/\d/.test(value[i])) {
+                        seen++;
+                        if (seen >= digitIdx) return i + 1;
+                    }
+                }
+                return value.length;
+            };
+
+            const formatPhone = (rawDigits) => {
+                let d = String(rawDigits || '');
+                if (!d) return '+7';
+
+                if (d[0] === '8') d = '7' + d.slice(1);
+                if (d[0] === '7') d = d.slice(1);
+
+                d = d.slice(0, 10);
+
+                let out = '+7';
+                if (d.length > 0) out += ' (' + d.slice(0, 3);
+                if (d.length >= 3) out += ')';
+                if (d.length > 3) out += ' ' + d.slice(3, 6);
+                if (d.length > 6) out += '-' + d.slice(6, 8);
+                if (d.length > 8) out += '-' + d.slice(8, 10);
+                return out;
+            };
+
+            const applyMask = () => {
+                const prev = phoneInput.value;
+                const caret = phoneInput.selectionStart ?? prev.length;
+                const digitIdx = digitIndexFromCaret(prev, caret);
+                const digits = onlyDigits(prev);
+                const next = formatPhone(digits);
+                phoneInput.value = next;
+                const nextCaret = caretFromDigitIndex(next, digitIdx);
+                try { phoneInput.setSelectionRange(nextCaret, nextCaret); } catch (e) {}
+            };
+
+            phoneInput.addEventListener('focus', () => {
+                if (!String(phoneInput.value || '').trim()) {
+                    phoneInput.value = '+7';
+                    try { phoneInput.setSelectionRange(phoneInput.value.length, phoneInput.value.length); } catch (e) {}
+                }
+            });
+
+            phoneInput.addEventListener('keydown', (e) => {
+                if (e.key !== 'Backspace') return;
+                const value = phoneInput.value || '';
+                const caret = phoneInput.selectionStart ?? value.length;
+                const selEnd = phoneInput.selectionEnd ?? caret;
+                if (caret !== selEnd) return;
+
+                if (caret > 0 && !/\d/.test(value[caret - 1])) {
+                    let i = caret - 1;
+                    while (i > 0 && !/\d/.test(value[i - 1])) i--;
+                    try { phoneInput.setSelectionRange(i, caret); } catch (e2) {}
+                }
+            });
+
+            phoneInput.addEventListener('input', applyMask);
+
+            applyMask();
         }
 
         document.querySelectorAll('.zone-chip').forEach((btn) => {
