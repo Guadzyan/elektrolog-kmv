@@ -325,6 +325,9 @@
                                 Записаться
                             </a>
                         </div>
+                        <div id="heroPriceLineIntro" class="mt-4 text-sm text-slate-700">
+                            Цена: —
+                        </div>
                         <div class="mt-4 text-sm text-slate-600">
                             Отвечаю в течение 10 минут • стерильность • сертификаты
                         </div>
@@ -404,6 +407,9 @@
                         <button id="heroPriceBtn" type="button" class="btn w-full sm:w-auto inline-flex justify-center rounded-full border border-slate-300 bg-white/70 px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-50">
                             Прайс
                         </button>
+                    </div>
+                    <div id="heroPriceLine" class="mt-4 text-sm text-slate-700">
+                        Цена: —
                     </div>
                     <div class="mt-4 grid gap-2 text-sm text-slate-700 max-w-xl">
                         <div class="flex items-start gap-2"><span class="mt-0.5">•</span><span>Одноразовые стерильные иглы, вскрываются при клиенте</span></div>
@@ -666,6 +672,44 @@
             <h2 class="text-2xl font-semibold tracking-tight">Запись</h2>
             <p class="mt-3 text-sm text-slate-700">Оставьте имя и телефон — я напишу в Telegram и предложу ближайшие окна.</p>
 
+            <div class="mt-6 rounded-3xl glass glass-strong p-6 reveal">
+                <div class="text-sm font-semibold">Частые зоны</div>
+                <div class="mt-3 flex flex-wrap gap-2">
+                    <button type="button" class="zone-chip btn rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" data-zone="Лицо">Лицо</button>
+                    <button type="button" class="zone-chip btn rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" data-zone="Подмышки">Подмышки</button>
+                    <button type="button" class="zone-chip btn rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" data-zone="Бикини">Бикини</button>
+                    <button type="button" class="zone-chip btn rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" data-zone="Ноги / руки">Ноги / руки</button>
+                    <button type="button" class="zone-chip btn rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-xs font-medium text-slate-900 hover:bg-slate-50" data-zone="Другая зона">Другая зона</button>
+                </div>
+                <div class="mt-3 text-xs text-slate-600">Нажмите на зону — я подставлю её в комментарий.</div>
+            </div>
+
+            <div class="mt-6 rounded-3xl glass glass-strong p-6 reveal">
+                <div class="text-sm font-semibold">Первый визит</div>
+                <div class="mt-2 text-sm text-slate-700">Если сомневаетесь — можно начать с короткого знакомства: обсудим зону, ощущения и план. Подберу комфортный режим.</div>
+            </div>
+
+            <div class="mt-6 grid gap-4 md:grid-cols-2">
+                <div class="rounded-3xl glass glass-strong p-6 reveal">
+                    <div class="text-sm font-semibold">Подготовка</div>
+                    <div class="mt-2 text-sm text-slate-700">За 24 часа не загорайте и не используйте агрессивные средства. Приходите на чистую кожу, без плотного крема.</div>
+                </div>
+                <div class="rounded-3xl glass glass-strong p-6 reveal">
+                    <div class="text-sm font-semibold">Противопоказания</div>
+                    <div class="mt-2 text-sm text-slate-700">Есть состояния, при которых процедуру лучше перенести. Если есть вопросы по здоровью — напишите, я подскажу.</div>
+                </div>
+            </div>
+
+            <div class="mt-6 rounded-3xl glass glass-strong p-6 reveal">
+                <div class="text-sm font-semibold">Время и ответ</div>
+                <div class="mt-2 text-sm text-slate-700">Обычно отвечаю в Telegram в течение 10 минут в рабочее время. Подберу ближайшие окна и подтвержу запись.</div>
+            </div>
+
+            <div class="mt-6 rounded-3xl glass glass-strong p-6 reveal">
+                <div class="text-sm font-semibold">Где находимся</div>
+                <div class="mt-2 text-sm text-slate-700">Пятигорск, ул. Партизанская — в 3 минутах от автовокзала.</div>
+            </div>
+
             <div class="mt-8 rounded-3xl glass glass-strong p-6 reveal">
                 <div class="text-sm font-medium">Быстрая заявка</div>
                 <form id="quickLeadForm" class="mt-4 grid gap-3">
@@ -673,6 +717,7 @@
                     <input name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm" required />
                     <textarea name="note" rows="3" placeholder="Комментарий (необязательно)" class="rounded-2xl border border-slate-300 px-4 py-3 text-sm"></textarea>
                     <button class="btn mt-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800" type="submit">Отправить заявку</button>
+                    <div class="text-xs text-slate-600">Не спамлю. Только по записи и вопросам по процедуре.</div>
                     <div id="quickMsg" class="hidden rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800"></div>
                 </form>
             </div>
@@ -683,7 +728,7 @@
         <div class="mx-auto max-w-6xl px-4 py-16">
             <h2 class="text-2xl font-semibold tracking-tight">Контакты</h2>
             <p class="mt-3 text-sm text-slate-700">
-                Напишите в удобный мессенджер — отвечу и подберу время.
+                Пятигорск, ул. Партизанская — 3 минуты от автовокзала. Напишите в удобный мессенджер — отвечу и подберу время.
             </p>
 
             <div class="mt-8 grid gap-4 md:grid-cols-3">
@@ -1049,17 +1094,31 @@
             $('priceMin').textContent = `${data.minimum_procedure_rub ?? '—'}`;
             $('needleBody').textContent = `${data.needles?.body ?? '—'} ₽`;
             $('needleFace').textContent = `${data.needles?.face ?? '—'} ₽`;
+
+            const minRub = data.minimum_procedure_rub ?? null;
+            const hourRub = perMin ? perMin * 60 : null;
+            const line = `Цена: ${hourRub ? `${hourRub} ₽/час` : '—'}${perMin ? ` (${perMin} ₽/мин)` : ''}${minRub ? ` • минимум ${minRub} ₽` : ''}`;
+            const heroLine = $('heroPriceLine');
+            if (heroLine) heroLine.textContent = line;
+            const heroLineIntro = $('heroPriceLineIntro');
+            if (heroLineIntro) heroLineIntro.textContent = line;
         } catch (e) {
             // ignore
         }
     }
 
     async function loadSlots() {
-        clearMsg();
-        $('slots').innerHTML = '';
-        $('slotsEmpty').classList.add('hidden');
+        const slotsEl = $('slots');
+        const slotsEmptyEl = $('slotsEmpty');
+        const dateEl = $('date');
+        const durationEl = document.querySelector('select[name=duration_minutes]');
+        if (!slotsEl || !slotsEmptyEl || !dateEl || !durationEl) return;
 
-        const date = $('date').value;
+        clearMsg();
+        slotsEl.innerHTML = '';
+        slotsEmptyEl.classList.add('hidden');
+
+        const date = dateEl.value;
         if (!date) {
             setMsg('Выберите дату.');
             return;
@@ -1069,14 +1128,14 @@
 
         const url = new URL('/api/public/slots', window.location.origin);
         url.searchParams.set('date', date);
-        url.searchParams.set('duration_minutes', document.querySelector('select[name=duration_minutes]').value);
+        url.searchParams.set('duration_minutes', durationEl.value);
 
         const res = await fetch(url.toString());
         const data = await res.json();
 
         const slots = Array.isArray(data.slots) ? data.slots : [];
         if (slots.length === 0) {
-            $('slotsEmpty').classList.remove('hidden');
+            slotsEmptyEl.classList.remove('hidden');
             return;
         }
 
@@ -1091,7 +1150,7 @@
                 btn.classList.add('bg-slate-900','text-white','border-slate-900');
                 $('starts_at').value = formatIsoLocal(s.starts_at);
             });
-            $('slots').appendChild(btn);
+            slotsEl.appendChild(btn);
         }
     }
 
@@ -1267,6 +1326,23 @@
             if (inner) heroBookHost.appendChild(inner);
             bookSection.remove();
         }
+
+        document.querySelectorAll('.zone-chip').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const zone = btn instanceof HTMLElement ? (btn.dataset.zone || '') : '';
+                const form = $('quickLeadForm');
+                const note = form ? form.querySelector('textarea[name="note"]') : null;
+                if (note && zone) {
+                    const prefix = 'Зона: ';
+                    const current = String(note.value || '').trim();
+                    const next = current ? `${prefix}${zone}\n${current}` : `${prefix}${zone}`;
+                    note.value = next;
+                }
+
+                const target = $('quickLeadForm');
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
 
         if (quickLeadForm) {
             quickLeadForm.addEventListener('submit', async (e) => {
